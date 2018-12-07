@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        iframe {
+            width: 100%;
+            height: 320px;
+            border: 0px;
+        }
+    </style>
+    <script>
+            window.addEventListener('message', function (e) {
+                if (e.origin !== "http://localhost:4200") {
+                    return;
+                }
+                var message = e.data;
+                console.log("Mensaje de App-2 (" + e.origin + "): \n" + JSON.stringify(message));
+                if(message.status === "00"){
+                    window.location="frame_4.html";
+                } else {
+                    alert(message.error);
+                }
+            });
+    </script>
+</head>
+
+<body>
+    <h2>Frame 3</h2>
+    <p>
+        Invocar otro frame para prueba de postMessage
+    </p>
+    <iframe src="http://localhost:4200/fpc.html" scrolling="no"></iframe>
+</body>
+
+</html>
